@@ -1,0 +1,27 @@
+module.exports={
+    entry:'./src/index.js',
+    output:{
+        path:'./build',
+        filename:'bundle.js'
+    },
+    devServer:{
+        inline:true,
+        port:3000
+    },
+    module:{
+        loaders:[
+            {
+                loader:'babel',
+                test:/\.js$/,
+                query:{
+                    "presets":['react','es2015'],
+                    "plugins": [["antd", [{ "libraryName": "antd", "style": "css" }]]]
+                }
+            },
+            {
+                test:/\.css$/,
+                loader:'style-loader!css-loader'
+            }
+        ]
+    }
+};
